@@ -1,0 +1,15 @@
+100 - swaps: 99 - tempo:     1.0000 ms - chamadas recursivas: 198
+100 - swaps: 197 - tempo:     1.0000 ms - chamadas recursivas: 148
+100 - swaps: 102 - tempo:     0.0000 ms - chamadas recursivas: 190
+1000 - swaps: 3683 - tempo:     7.0000 ms - chamadas recursivas: 1396
+1000 - swaps: 4129 - tempo:     6.0000 ms - chamadas recursivas: 1936
+10000 - swaps: 19997 - tempo:   162.0000 ms - chamadas recursivas: 14998
+10000 - swaps: 13077 - tempo:    63.0000 ms - chamadas recursivas: 19112
+10000 - swaps: 49571 - tempo:    61.0000 ms - chamadas recursivas: 13936
+10000 - swaps: 49592 - tempo:    63.0000 ms - chamadas recursivas: 19802
+100000 - swaps: 199997 - tempo:  9667.0000 ms - chamadas recursivas: 149998
+100000 - swaps: 145003 - tempo:   650.0000 ms - chamadas recursivas: 190948
+100000 - swaps: 631015 - tempo:   624.0000 ms - chamadas recursivas: 139686
+100000 - swaps: 576663 - tempo:   704.0000 ms - chamadas recursivas: 199366
+1000000 - swaps: 7627603 - tempo:  6488.0000 ms - chamadas recursivas: 1395932
+1000000 - swaps: 6565038 - tempo:  9584.0000 ms - chamadas recursivas: 1998002
