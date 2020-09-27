@@ -202,7 +202,6 @@ int particione_lomuto_aleatorio(int arr[], int inicio, int fim){
   swaps++;
 
   // Particionamento
-  // Particionamento
   int i = inicio - 1;
   int j;
   for(j = inicio; j < fim; j++){

@@ -31,6 +31,7 @@ void chamaAlgoritmos(char* nome, char* algo){
   FILE* stats;
   // tempo de execução em milisegundos
   double tempo;
+  double tempo_total = 0;
   swaps = 0;
   recurisiveCalls = 0;
   if(!arq){
@@ -40,21 +41,22 @@ void chamaAlgoritmos(char* nome, char* algo){
   // numero de arrays do arquivo
   int n;
   fscanf(arq, "%d", &n);
+  //Criação dos arquivos de saída para cada algoritmo
   if(strcmp(algo, "ha") == 0){
     saida = fopen("saida-aleatorio-hoare.txt", "w+");
     fprintf(saida, "%d\n", n);
     stats = fopen("stats-aleatorio-hoare.txt", "w+");
   } else if(strcmp(algo, "hm") == 0){
-    saida = fopen("saida-mediana-hoare.txt", "w+");
+    saida = fopen("saida-mediana3-hoare.txt", "w+");
     fprintf(saida, "%d\n", n);
-    stats = fopen("stats-mediana-hoare.txt", "w+");
+    stats = fopen("stats-mediana3-hoare.txt", "w+");
   } else if(strcmp(algo, "la") == 0){
     saida = fopen("saida-aleatorio-lomuto.txt", "w+");
     stats = fopen("stats-aleatorio-lomuto.txt", "w+");
     fprintf(saida, "%d\n", n);
   } else if(strcmp(algo, "lm") == 0){
-    saida = fopen("saida-mediana-lomuto.txt", "w+");
-    stats = fopen("stats-mediana-lomuto.txt", "w+");
+    saida = fopen("saida-mediana3-lomuto.txt", "w+");
+    stats = fopen("stats-mediana3-lomuto.txt", "w+");
     fprintf(saida, "%d\n", n);
   }
   
@@ -70,9 +72,11 @@ void chamaAlgoritmos(char* nome, char* algo){
       swaps = 0;
       recurisiveCalls = 0;
       fflush(saida);
+      //Coloca o amanho do array no inicio da linha
       fprintf(saida, "%d", tam);
       fflush(saida);
       tempo = hoarealeatorio(&arq, &saida, tam);
+      tempo_total += tempo;
       fprintf(stats,"%d - swaps: %d - tempo: %10.4f ms - chamadas recursivas: %d\n", tam, swaps, tempo, recurisiveCalls);
 
     //hoare mediana
@@ -80,9 +84,11 @@ void chamaAlgoritmos(char* nome, char* algo){
       swaps = 0;
       recurisiveCalls = 0;
       fflush(saida);
+      //Coloca o amanho do array no inicio da linha
       fprintf(saida, "%d", tam);
       fflush(saida);
       tempo = hoaremediana(&arq, &saida, tam);
+      tempo_total += tempo;
       fprintf(stats,"%d - swaps: %d - tempo: %10.4f ms - chamadas recursivas: %d\n", tam, swaps,tempo, recurisiveCalls);
 
 
@@ -91,9 +97,11 @@ void chamaAlgoritmos(char* nome, char* algo){
       swaps = 0;
       recurisiveCalls = 0;
       fflush(saida);
+      //Coloca o amanho do array no inicio da linha
       fprintf(saida, "%d", tam);
       fflush(saida);
       tempo = lomutoaleatorio(&arq, &saida, tam);
+      tempo_total += tempo;
       fprintf(stats,"%d - swaps: %d - tempo: %10.4f ms - chamadas recursivas: %d\n", tam, swaps,tempo, recurisiveCalls);
 
     //lomuto mediana
@@ -101,9 +109,11 @@ void chamaAlgoritmos(char* nome, char* algo){
       swaps = 0;
       recurisiveCalls = 0;
       fflush(saida);
+      //Coloca o amanho do array no inicio da linha
       fprintf(saida, "%d", tam);
       fflush(saida);
       tempo = lomutomediana(&arq, &saida, tam);
+      tempo_total += tempo;
       fprintf(stats,"%d - swaps: %d - tempo: %10.4f ms - chamadas recursivas: %d\n", tam, swaps,tempo, recurisiveCalls);
 
     }
@@ -111,7 +121,7 @@ void chamaAlgoritmos(char* nome, char* algo){
 
   // fprintf(stats, "Número de swaps: %d\n", swaps);
   // fprintf(stats, "Número de chamadas recursivas: %d\n", recurisiveCalls);
-  // fprintf(stats, "Tempo de execução: %10.4Lf ms", tempo);
+  fprintf(stats, "Tempo total para processar o arquivo: %10.4f ms", tempo_total);
   fclose(arq);
   fclose(saida);
 }
@@ -121,12 +131,16 @@ double hoarealeatorio(FILE** arq, FILE** saida, int tam) {
   clock_t start, end;
   double time_elapsed_ms; 
   start = clock();
+  // Alocação do array a ser ordenado
   int* arr = (int*) malloc(sizeof(int)*tam);
   int i;
+  //Lendo o array do arquivo
   for(i = 0; i < tam; i++){
     fscanf(*arq, "%d", &(arr[i]));
   }
+  //Ordenando o array
   quicksort_aleatorio_hoare(arr, 0, tam-1);
+  //Colocando o resultado no arquivo de saída
   for(i = 0; i < tam-1; i++){
     fprintf(*saida, " %d", arr[i]);
     fflush(*saida);
@@ -134,7 +148,9 @@ double hoarealeatorio(FILE** arq, FILE** saida, int tam) {
   fprintf(*saida, " %d\n", arr[tam-1]);
   fflush(*saida);
   end = clock();
-  return time_elapsed_ms = 1000.0 * (end-start) / (double) CLOCKS_PER_SEC;
+  free(arr);
+  //Calculando o tempo em milisegundos
+  return time_elapsed_ms = 1000.0*(double)(end-start) / (double) CLOCKS_PER_SEC;
 }
 
 
@@ -142,8 +158,10 @@ double hoaremediana(FILE** arq, FILE** saida, int tam) {
   clock_t start, end;
   double time_elapsed_ms; 
   start = clock();
+  //Alocando o array a ser ordenado
   int* arr = (int*) malloc(sizeof(int)*tam);
   int i;
+  //Lendo o array do arquivo
   for(i = 0; i < tam; i++){
     fscanf(*arq, "%d", &(arr[i]));
   }
@@ -155,15 +173,18 @@ double hoaremediana(FILE** arq, FILE** saida, int tam) {
   fprintf(*saida, " %d\n", arr[tam-1]);
   fflush(*saida);
   end = clock();
-  return time_elapsed_ms = 1000.0 * (end-start) / (double) CLOCKS_PER_SEC;
+  free(arr);
+  return time_elapsed_ms = 1000.0*(double) (end-start) / (double) CLOCKS_PER_SEC;
 }
 
 double lomutoaleatorio(FILE** arq, FILE** saida, int tam) {
   clock_t start, end;
   double time_elapsed_ms; 
   start = clock();
+  //Alocando o array a ser ordenado
   int* arr = (int*) malloc(sizeof(int)*tam);
   int i;
+  //Lendo o array do arquivo
   for(i = 0; i < tam; i++){
     fscanf(*arq, "%d", &(arr[i]));
   }
@@ -175,15 +196,18 @@ double lomutoaleatorio(FILE** arq, FILE** saida, int tam) {
   fprintf(*saida, " %d\n", arr[tam-1]);
   fflush(*saida);
   end = clock();
-  return time_elapsed_ms = 1000.0 * (end-start) / (double)CLOCKS_PER_SEC;
+  free(arr);
+  return time_elapsed_ms = 1000.0*(double) (end-start) / (double)CLOCKS_PER_SEC;
 }
 
 double lomutomediana(FILE** arq, FILE** saida, int tam) {
   clock_t start, end;
   double time_elapsed_ms; 
   start = clock();
+  //Alocando o array a ser ordenado
   int* arr = (int*) malloc(sizeof(int)*tam);
   int i;
+  //Lendo o array do arquivo  
   for(i = 0; i < tam; i++){
     fscanf(*arq, "%d", &(arr[i]));
   }
@@ -195,5 +219,6 @@ double lomutomediana(FILE** arq, FILE** saida, int tam) {
   fprintf(*saida, " %d\n", arr[tam-1]);
   fflush(*saida);
   end = clock();
-  return time_elapsed_ms = 1000.0 * (end-start) / (double)CLOCKS_PER_SEC;
+  free(arr);
+  return time_elapsed_ms = 1000.0*(double) (end-start) / (double)CLOCKS_PER_SEC;
 }
