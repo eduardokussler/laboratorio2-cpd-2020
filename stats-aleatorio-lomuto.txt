@@ -1,16 +1,16 @@
-100 - swaps: 345 - tempo:     0.2470 ms - chamadas recursivas: 120
-100 - swaps: 516 - tempo:     0.2720 ms - chamadas recursivas: 146
-100 - swaps: 449 - tempo:     0.2280 ms - chamadas recursivas: 110
-100 - swaps: 578 - tempo:     0.2590 ms - chamadas recursivas: 140
-100 - swaps: 1084 - tempo:     0.2900 ms - chamadas recursivas: 182
-1000 - swaps: 5585 - tempo:     2.8040 ms - chamadas recursivas: 1218
-1000 - swaps: 7987 - tempo:     2.6060 ms - chamadas recursivas: 1420
-1000 - swaps: 7065 - tempo:     2.4070 ms - chamadas recursivas: 1322
-1000 - swaps: 6632 - tempo:     2.4320 ms - chamadas recursivas: 1348
-1000 - swaps: 24320 - tempo:     3.1450 ms - chamadas recursivas: 1936
-10000 - swaps: 91987 - tempo:    25.2900 ms - chamadas recursivas: 12134
-10000 - swaps: 86425 - tempo:    26.3560 ms - chamadas recursivas: 14294
-10000 - swaps: 103966 - tempo:    25.6290 ms - chamadas recursivas: 12844
-10000 - swaps: 87088 - tempo:    26.2850 ms - chamadas recursivas: 13288
-10000 - swaps: 730235 - tempo:    31.8360 ms - chamadas recursivas: 19802
-Tempo total para processar o arquivo:   150.0860 ms
+100 - swaps: 356 - tempo:     0.1760 ms - chamadas recursivas: 100
+100 - swaps: 478 - tempo:     0.1980 ms - chamadas recursivas: 132
+100 - swaps: 433 - tempo:     0.1920 ms - chamadas recursivas: 122
+100 - swaps: 351 - tempo:     0.1970 ms - chamadas recursivas: 130
+100 - swaps: 1061 - tempo:     0.2250 ms - chamadas recursivas: 182
+1000 - swaps: 8383 - tempo:     1.8610 ms - chamadas recursivas: 1000
+1000 - swaps: 6890 - tempo:     2.1120 ms - chamadas recursivas: 1352
+1000 - swaps: 7108 - tempo:     1.9780 ms - chamadas recursivas: 1264
+1000 - swaps: 6809 - tempo:     1.9890 ms - chamadas recursivas: 1338
+1000 - swaps: 25109 - tempo:     2.4290 ms - chamadas recursivas: 1936
+10000 - swaps: 83528 - tempo:    18.6430 ms - chamadas recursivas: 10000
+10000 - swaps: 83522 - tempo:    20.1450 ms - chamadas recursivas: 13416
+10000 - swaps: 88857 - tempo:    20.3700 ms - chamadas recursivas: 12804
+10000 - swaps: 86841 - tempo:    21.0660 ms - chamadas recursivas: 13272
+10000 - swaps: 726225 - tempo:    26.2170 ms - chamadas recursivas: 19802
+Tempo total para processar o arquivo:   117.7980 ms
