@@ -148,6 +148,7 @@ double hoarealeatorio(FILE** arq, FILE** saida, int tam) {
   fprintf(*saida, " %d\n", arr[tam-1]);
   fflush(*saida);
   end = clock();
+  check_correctness(arr, tam);
   free(arr);
   //Calculando o tempo em milisegundos
   return time_elapsed_ms = 1000.0*(double)(end-start) / (double) CLOCKS_PER_SEC;
@@ -173,6 +174,7 @@ double hoaremediana(FILE** arq, FILE** saida, int tam) {
   fprintf(*saida, " %d\n", arr[tam-1]);
   fflush(*saida);
   end = clock();
+  check_correctness(arr, tam);
   free(arr);
   return time_elapsed_ms = 1000.0*(double) (end-start) / (double) CLOCKS_PER_SEC;
 }
@@ -196,6 +198,7 @@ double lomutoaleatorio(FILE** arq, FILE** saida, int tam) {
   fprintf(*saida, " %d\n", arr[tam-1]);
   fflush(*saida);
   end = clock();
+  check_correctness(arr, tam);
   free(arr);
   return time_elapsed_ms = 1000.0*(double) (end-start) / (double)CLOCKS_PER_SEC;
 }
@@ -219,6 +222,7 @@ double lomutomediana(FILE** arq, FILE** saida, int tam) {
   fprintf(*saida, " %d\n", arr[tam-1]);
   fflush(*saida);
   end = clock();
+  check_correctness(arr, tam);
   free(arr);
   return time_elapsed_ms = 1000.0*(double) (end-start) / (double)CLOCKS_PER_SEC;
 }
